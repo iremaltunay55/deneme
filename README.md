@@ -1,5 +1,7 @@
 # Weather Forecast MCP Server
 
+[![smithery badge](https://smithery.ai/badge/@iremaltunay55/deneme1)](https://smithery.ai/server/@iremaltunay55/deneme1)
+
 Bu proje, OpenWeatherMap API kullanarak hava durumu bilgilerini sağlayan bir Model Context Protocol (MCP) server'ıdır. Enlem ve boylam koordinatları veya şehir adı ile hava durumu bilgilerini alabilirsiniz.
 
 ## Özellikler
