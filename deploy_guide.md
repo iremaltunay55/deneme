@@ -5,8 +5,18 @@ Bu rehber, Weather Forecast MCP projenizi Smithery platformunda nasıl deploy ed
 ## 📋 Ön Gereksinimler
 
 1. **GitHub Hesabı**: Projeyi GitHub'da barındırmak için
-2. **Smithery Hesabı**: MCP server'ı deploy etmek için
+2. **Smithery Hesabı**: MCP server'ı deploy etmek için ([smithery.ai](https://smithery.ai))
 3. **OpenWeatherMap API Key**: Hava durumu verilerine erişim için (mevcut: `6b2e97b1b6559436aee37b83b71412b3`)
+
+## ✅ Smithery Uyumluluğu
+
+Bu proje Smithery'de deploy edilmek üzere özel olarak hazırlanmıştır:
+
+- ✅ **Dockerfile**: Container build için hazır
+- ✅ **smithery.yaml**: Smithery konfigürasyonu mevcut
+- ✅ **STDIO Transport**: MCP protokolü için uygun
+- ✅ **Çevre Değişkenleri**: Konfigürasyon desteği
+- ✅ **Health Check**: Container sağlık kontrolü
 
 ## 🚀 Deployment Adımları
 

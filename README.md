@@ -1,11 +1,12 @@
-# Weather Forecast MCP Server
+# Weather Forecast MCP Server with AI Assistant
 
-Bu proje, OpenWeatherMap API kullanarak hava durumu bilgilerini sağlayan bir Model Context Protocol (MCP) server'ıdır. Enlem ve boylam koordinatları veya şehir adı ile hava durumu bilgilerini alabilirsiniz.
+Bu proje, OpenWeatherMap API kullanarak hava durumu bilgilerini sağlayan bir Model Context Protocol (MCP) server'ıdır. Enlem ve boylam koordinatları veya şehir adı ile hava durumu bilgilerini alabilirsiniz. **Yeni eklenen yapay zeka asistanı ile kullanıcı dostu iletişim kurar!**
 
-## Özellikler
+## 🌟 Özellikler
 
+### Temel Hava Durumu Fonksiyonları
 - 🌍 Enlem/boylam koordinatlarına göre hava durumu
-- 🏙️ Şehir adına göre hava durumu  
+- 🏙️ Şehir adına göre hava durumu
 - 🌡️ Detaylı sıcaklık bilgileri (mevcut, hissedilen, min/max)
 - 💨 Rüzgar hızı ve yönü
 - 💧 Nem oranı ve atmosfer basıncı
@@ -13,6 +14,14 @@ Bu proje, OpenWeatherMap API kullanarak hava durumu bilgilerini sağlayan bir Mo
 - 🌅 Güneş doğuş/batış saatleri
 - 🌧️ Yağış bilgileri (varsa)
 - 🇹🇷 Türkçe açıklamalar
+
+### 🤖 Yapay Zeka Asistanı (YENİ!)
+- **Dostane iletişim**: Kullanıcıyla doğal dilde konuşur
+- **Akıllı koordinat toplama**: Mesajlardan koordinatları otomatik çıkarır
+- **Şehir adı tanıma**: Şehir adlarını anlayıp hava durumu getirir
+- **Kullanıcı dostu format**: Hava durumu bilgilerini emoji ve tavsiyelerle sunar
+- **Çoklu format desteği**: Farklı koordinat formatlarını kabul eder
+- **Kişiselleştirilmiş tavsiyeler**: Hava durumuna göre giyim ve aktivite önerileri
 
 ## Kurulum
 
@@ -48,9 +57,71 @@ Bu proje Smithery platformunda deploy edilmek üzere tasarlanmıştır.
 3. GitHub repository'nizi bağlayın
 4. `smithery.yaml` dosyası otomatik olarak tanınacaktır
 
-## Kullanım
+## 📖 Kullanım
 
-### Tools (Araçlar)
+### 🤖 Yapay Zeka Asistanı Araçları
+
+#### 1. `weather_greeting()`
+Asistanın karşılama mesajını gösterir.
+
+**Örnek yanıt:**
+```
+🌤️ **Merhaba! Hava Durumu Asistanınızım!** 😊
+
+Size güncel hava durumu bilgileri sağlamak için buradayım!
+
+**Nasıl kullanabilirsiniz:**
+
+📍 **Koordinat ile:**
+   • Enlem: 41.0082, Boylam: 28.9784
+   • Veya kısaca: 41.0082, 28.9784
+
+🏙️ **Şehir adı ile:**
+   • İstanbul için hava durumu
+   • Ankara hava durumu
+```
+
+#### 2. `chat_weather_assistant(message)`
+Kullanıcı mesajını analiz eder ve uygun yanıt verir. Koordinat veya şehir adı bulursa hava durumu getirir.
+
+**Desteklenen formatlar:**
+- `"Merhaba"` → Karşılama mesajı
+- `"Enlem: 41.0082, Boylam: 28.9784"` → Hava durumu
+- `"41.0082, 28.9784"` → Hava durumu
+- `"İstanbul için hava durumu"` → Hava durumu
+- `"Yardım"` → Kullanım kılavuzu
+
+**Örnek kullanım:**
+```json
+{
+  "message": "İstanbul için hava durumu"
+}
+```
+
+#### 3. `get_weather(latitude, longitude)`
+Koordinatlara göre kullanıcı dostu formatta hava durumu getirir.
+
+**Parametreler:**
+- `latitude` (float): Enlem (-90 ile 90 arasında)
+- `longitude` (float): Boylam (-180 ile 180 arasında)
+
+**Örnek yanıt:**
+```
+🌍 **İstanbul, TR** için hava durumu:
+
+🌤️ **Genel Durum:** Açık
+🌡️ **Sıcaklık:** 22°C (Hissedilen: 24°C)
+📊 **Günlük Aralık:** 18°C - 26°C
+💧 **Nem:** %65
+🔽 **Basınç:** 1013 hPa
+💨 **Rüzgar:** 3.2 m/s
+
+💡 **Tavsiyelerim:**
+👕 Güzel hava! Rahat kıyafetler tercih edin.
+☀️ Açık hava! Dışarıda vakit geçirmek için harika!
+```
+
+### 🔧 Temel MCP Araçları
 
 #### 1. `get_weather_by_coordinates`
 Enlem ve boylam koordinatlarına göre hava durumu bilgilerini getirir.
@@ -170,6 +241,43 @@ Server, aşağıdaki durumlarda uygun hata mesajları döndürür:
 - API erişim hataları
 - Şehir bulunamadığında
 - Ağ bağlantı sorunları
+
+## 🧪 Test
+
+### Asistan Testleri
+Yapay zeka asistanının tüm özelliklerini test etmek için:
+```bash
+python test_assistant.py
+```
+
+Bu test dosyası şunları test eder:
+- Karşılama mesajları
+- Chat asistanı yanıtları
+- Koordinat tanıma
+- Şehir adı tanıma
+- Hata yönetimi
+- İnteraktif mod
+
+### Temel Server Testleri
+Temel MCP fonksiyonlarını test etmek için:
+```bash
+python test_server.py
+```
+
+### İnteraktif Test Modu
+Test dosyasını çalıştırdıktan sonra interaktif modu seçerek asistanla gerçek zamanlı konuşabilirsiniz:
+
+```
+🎮 İnteraktif test modunu başlatmak ister misiniz? (e/h): e
+
+👤 Siz: Merhaba
+🤖 Asistan: 🌤️ Merhaba! Ben hava durumu asistanınızım! 😊
+
+👤 Siz: İstanbul için hava durumu
+🤖 Asistan: Buldum! İstanbul için hava durumu:
+🌍 **İstanbul, TR** için hava durumu:
+...
+```
 
 ## Lisans
 

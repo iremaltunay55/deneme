@@ -1,3 +1,4 @@
+version: 1
 startCommand:
   type: stdio
   configSchema:
@@ -5,28 +6,28 @@ startCommand:
     properties:
       api_key:
         type: string
-        description: "OpenWeatherMap API anahtarı"
+        title: "OpenWeatherMap API Key"
+        description: "Your OpenWeatherMap API key for accessing weather data"
         default: "6b2e97b1b6559436aee37b83b71412b3"
       units:
         type: string
-        description: "Varsayılan ölçü birimi (metric, imperial, standard)"
+        title: "Units"
+        description: "Default unit system for temperature and measurements"
         default: "metric"
         enum: ["metric", "imperial", "standard"]
       language:
         type: string
-        description: "Dil kodu"
+        title: "Language"
+        description: "Language code for weather descriptions"
         default: "tr"
+        enum: ["tr", "en", "es", "fr", "de", "it", "pt", "ru", "ja", "zh"]
   commandFunction: |-
-    (config) => ({ 
-      command: 'python', 
-      args: ['-m', 'server'],
+    (config) => ({
+      command: 'python',
+      args: ['server.py'],
       env: {
         OPENWEATHER_API_KEY: config.api_key || '6b2e97b1b6559436aee37b83b71412b3',
         DEFAULT_UNITS: config.units || 'metric',
         LANGUAGE: config.language || 'tr'
       }
     })
-  exampleConfig:
-    api_key: "6b2e97b1b6559436aee37b83b71412b3"
-    units: "metric"
-    language: "tr"
