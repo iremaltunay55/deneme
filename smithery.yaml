@@ -1,0 +1,32 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      api_key:
+        type: string
+        description: "OpenWeatherMap API anahtarı"
+        default: "6b2e97b1b6559436aee37b83b71412b3"
+      units:
+        type: string
+        description: "Varsayılan ölçü birimi (metric, imperial, standard)"
+        default: "metric"
+        enum: ["metric", "imperial", "standard"]
+      language:
+        type: string
+        description: "Dil kodu"
+        default: "tr"
+  commandFunction: |-
+    (config) => ({ 
+      command: 'python', 
+      args: ['-m', 'server'],
+      env: {
+        OPENWEATHER_API_KEY: config.api_key || '6b2e97b1b6559436aee37b83b71412b3',
+        DEFAULT_UNITS: config.units || 'metric',
+        LANGUAGE: config.language || 'tr'
+      }
+    })
+  exampleConfig:
+    api_key: "6b2e97b1b6559436aee37b83b71412b3"
+    units: "metric"
+    language: "tr"
