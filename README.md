@@ -1,5 +1,7 @@
 # Weather Forecast MCP Server
 
+[![smithery badge](https://smithery.ai/badge/@iremaltunay55/weatherforecast-mcp-server)](https://smithery.ai/server/@iremaltunay55/weatherforecast-mcp-server)
+
 Bu proje, OpenWeatherMap API kullanarak hava durumu bilgilerini sağlayan bir Model Context Protocol (MCP) server'ıdır. Enlem ve boylam koordinatları veya şehir adı ile hava durumu bilgilerini alabilirsiniz.
 
 ## Özellikler
@@ -20,6 +22,14 @@ Bu proje, OpenWeatherMap API kullanarak hava durumu bilgilerini sağlayan bir Mo
 
 - Python 3.8+
 - OpenWeatherMap API anahtarı
+
+### Installing via Smithery
+
+To install Weather Forecast MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@iremaltunay55/weatherforecast-mcp-server):
+
+```bash
+npx -y @smithery/cli install @iremaltunay55/weatherforecast-mcp-server --client claude
+```
 
 ### Yerel Kurulum
 
